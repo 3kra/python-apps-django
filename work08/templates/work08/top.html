@@ -21,11 +21,16 @@
                 <a href="{% url 'work08:edit' memo.id %}" class="edit">編集</a>
             </span>
             <span class="memo-title">{{ memo.title }}</span>
+
+            {% if memo.image %}
+            <img src="{{ memo.image.url }}" alt="メモ画像" style="max-width:100px;">
+            {% endif %}
         </li>
         {% empty %}
         <li>メモはありません</li>
         {% endfor %}
     </ul>
+
 </body>
 
 </html>
