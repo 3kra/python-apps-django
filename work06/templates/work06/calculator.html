@@ -1,0 +1,13 @@
+<h1>四則演算計算機</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">計算する</button>
+</form>
+
+{% if result != None %}
+<h2>計算結果: {{ result }}</h2>
+{% endif %}
+
+<p><a href="{% url 'index' %}">トップに戻る</a></p>

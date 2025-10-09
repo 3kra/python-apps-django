@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>メモ一覧</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work08/styles.css' %}">
+</head>
+
+<body>
+    <h1>メモ帳アプリ</h1>
+
+    <button onclick="location.href='{% url 'work08:create_memo' %}'">新規作成</button>
+
+    <h2>メモ一覧</h2>
+    <ul>
+        {% for memo in memos %}
+        <li>
+            <span class="edit-link">
+                <a href="{% url 'work08:edit' memo.id %}" class="edit">編集</a>
+            </span>
+            <span class="memo-title">{{ memo.title }}</span>
+        </li>
+        {% empty %}
+        <li>メモはありません</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>メモ編集</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work08/styles.css' %}">
+</head>
+
+<body>
+    <h1>メモ帳アプリ - 編集</h1>
+    <p><a href="{% url 'work08:top' %}">メモ一覧に戻る</a></p>
+
+    <h2>メモ編集</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>タイトル:<br>
+            <input type="text" name="title" value="{{ memo.title }}">
+        </p>
+        <p>内容:<br>
+            <textarea name="content" rows="10" cols="50">{{ memo.content }}</textarea>
+        </p>
+        <button type="submit" class="save">保存</button>
+    </form>
+
+    <div class="delete-section">
+        <form method="post" action="{% url 'work08:delete_memo' memo.id %}">
+            {% csrf_token %}
+            <button type="submit" class="delete">削除</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

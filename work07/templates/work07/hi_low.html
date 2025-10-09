@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hi & Low</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work07/styles.css' %}">
+</head>
+
+<body>
+    <h1>Hi & Low</h1>
+    <p>数字は1〜10です。HighかLowを選んでください（Highは6〜10、Lowは1〜5とします）:</p>
+
+    <form method="get">
+        <button type="submit" name="choice" value="High">High</button>
+        <button type="submit" name="choice" value="Low">Low</button>
+    </form>
+
+    {% if result %}
+    <p>出た数字: {{ number }}</p>
+    <p>結果: {{ result }}</p>
+    {% endif %}
+
+    <br>
+    <button onclick="location.href='{% url 'work07_top' %}'">トップに戻る</button>
+</body>
+
+</html>

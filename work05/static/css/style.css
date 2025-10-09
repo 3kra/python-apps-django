@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+
+/* ページ全体の基本設定 */
+body {
+    font-family: serif, "Helvetica", "Arial", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: lightgray;
+}
+
+/* ヘッダー */
+header {
+    background-color: lightblue;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+}
+
+/* プロフィールのタイトル */
+header h1 {
+    font-size: 40px;
+    /* padding: 80px; */
+}
+
+/* セクション */
+section {
+    padding: 0 50px;
+    margin: 0 auto;
+    max-width: 800px;
+    color: #2c2c2c;
+
+}
+
+/* 見出し */
+h2 {
+    border-bottom: 2px solid #4a90e2;
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 32 px;
+    margin: 50px 0 60px 0;
+    padding: 10px;
+}
+
+/* プロフィールの名前 */
+.profile-name {
+    /* font-weight: bold; */
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* プロフィールリスト */
+.profile-list {
+    padding: 30px;
+    margin: 20px auto;
+    width: 200px;
+    text-align: center;
+}
+
+/* Hobbyのグリッド配置 */
+.hobby-grid {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-evenly;
+    /* border: white 1px solid; */
+}
+
+
+
+/* Hobbyグリットの文字*/
+.hobby-grid p {
+    /* background-color: lightblue; */
+    margin: 0 0 15px 0;
+    /* margin-top: 5px; */
+    /* text-align: center; */
+    /* font-size: 16px; */
+    /* border-radius: 8px; */
+
+
+}
+
+
+
+/* 目標 */
+.goal {
+    font-size: 16px;
+    text-align: center;
+    margin: 0 0 50px 0;
+}
+
+
+
+/* スマホ対応版 */
+@media (max-width: 600px) {
+    section {
+        padding: 20px;
+    }
+
+    .hobby-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hobby-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

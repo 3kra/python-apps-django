@@ -1,0 +1,15 @@
+{% load humanize %}
+
+<h1>割り勘計算してくれるくん</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">計算する</button>
+</form>
+
+{% if result %}
+<h2>1人あたりの金額: {{ result|floatformat:0|intcomma }}円</h2>
+{% endif %}
+
+<p><a href="{% url 'index' %}">トップに戻る</a></p>

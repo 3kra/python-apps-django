@@ -1,0 +1,148 @@
+/* === 全体の設定 === */
+body {
+    background-color: #ffffff;
+    /* 背景を白 */
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Meiryo", sans-serif;
+    color: #333;
+    margin: 40px;
+}
+
+/* === 見出し === */
+h1 {
+    color: #0018a8;
+    /* 濃い青 */
+    border-bottom: 2px solid #0018a8;
+    padding-bottom: 5px;
+}
+
+/* === サブ見出し（メモ一覧・編集） === */
+h2 {
+    color: #228B22;
+    /* 緑 */
+}
+
+/* === ボタン（共通） === */
+button {
+    background-color: #c62828;
+    /* 赤 */
+    color: white;
+    /* 文字を白に */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* === ボタンのホバー時（マウスをのせたとき） === */
+button:hover {
+    background-color: #a91313;
+}
+
+/* === メモ一覧のリスト === */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    /* タイトル左・削除右 */
+    align-items: center;
+}
+
+/* === 削除ボタン === */
+form button.delete-btn {
+    background-color: transparent;
+    color: red;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+}
+
+form button:hover {
+    text-decoration: underline;
+}
+
+/* ＝＝＝保存ボタン */
+form button.save-btn {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+form button.save-btn:hover {
+    background-color: #a91313;
+}
+
+
+/* === メモ一覧のタイトル＋編集ボタン配置 === */
+.memo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.memo-title {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+/* === 編集リンク（トップ画面） === */
+.edit-link a.edit {
+    color: #c62828;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.edit-link a.edit:hover {
+    text-decoration: underline;
+}
+
+/* === メモタイトル === */
+.memo-title {
+    color: #333;
+}
+
+/* === 保存ボタン === */
+button.save {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button.save:hover {
+    background-color: #a91313;
+}
+
+/* === 削除ボタン（編集画面） === */
+.delete-section {
+    margin-top: 30px;
+    /* 保存ボタンとの間に余白 */
+}
+
+button.delete {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button.delete:hover {
+    background-color: #a91313;
+}

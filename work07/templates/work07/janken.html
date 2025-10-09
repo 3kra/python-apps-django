@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>じゃんけんゲーム</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work07/styles.css' %}">
+</head>
+
+<body>
+    <h1>じゃんけんゲーム</h1>
+
+    <p>手を選んでください：</p>
+    <form method="get">
+        <button type="submit" name="hand" value="グー">グー</button>
+        <button type="submit" name="hand" value="チョキ">チョキ</button>
+        <button type="submit" name="hand" value="パー">パー</button>
+    </form>
+
+    {% if result %}
+    <p>あなた: {{ result.user_hand }}</p>
+    <p>コンピュータ: {{ result.computer_hand }}</p>
+    <p>結果: {{ result.outcome }}</p>
+    {% endif %}
+
+
+    <br>
+    <button onclick="location.href='{% url 'work07_top' %}'">トップに戻る</button>
+</body>
+
+</html>

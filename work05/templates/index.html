@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Sawarabi+Mincho&display=swap">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <title>My Profile Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>My Profile Page</h1>
+    </header>
+
+    <main>
+        <!-- プロフィール -->
+        <section>
+            <h2>Profile</h2>
+            <p class="profile-name">山口さくら</p>
+            <dl class="profile-list">
+                <dt>年齢：19歳</dt>
+                <dt>血液型：O型</dt>
+                <dt>出身：佐賀県</dt>
+                <dt>好きな食べ物：エビ</dt>
+                <dt>好きな季節：冬</dt>
+            </dl>
+        </section>
+
+        <!-- 趣味 -->
+        <section>
+            <h2>Hobby</h2>
+            <div class="hobby-grid">
+                <div class="hobby-card.eiga">
+                    <img src="/static/images/eiga.jpg" alt="映画鑑賞">
+                    <p>映画鑑賞</a></p>
+                </div>
+                <div class="hobby-card.ongaku">
+                    <img src="/static/images/ongaku.jpg" alt="音楽">
+                    <p>音楽</a></p>
+                </div>
+                <div class="hobby-card.dokusyo">
+                    <img src="/static/images/dokusyo.jpeg" alt="読書">
+                    <p>読書</p>
+                </div>
+                <div class="hobby-card.okashi">
+                    <img src="/static/images/okashi.jpeg" alt="お菓子作り">
+                    <p>お菓子作り</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 今年の目標 -->
+        <section>
+            <h2>今年の目標</h2>
+            <div class="goal">
+                <p>本を10冊読む!!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Profile</p>
+    </footer>
+</body>
+
+</html>

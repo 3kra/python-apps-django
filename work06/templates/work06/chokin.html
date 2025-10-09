@@ -1,0 +1,27 @@
+{% load humanize %}
+
+<h1>毎月の貯金計算くん</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">計算する</button>
+</form>
+
+{% if result %}
+<h2>貯金シミュレーション結果</h2>
+<table border="1">
+    <tr>
+        <th>年数</th>
+        <th>合計金額</th>
+    </tr>
+    {% for item in result %}
+    <tr>
+        <td>{{ item.year }}年目</td>
+        <td>{{ item.total|intcomma }}円</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<p><a href="{% url 'index' %}">トップに戻る</a></p>
