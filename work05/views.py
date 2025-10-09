@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 # トップページ：index.htmlを表示
 def index(request):
-    return render(request, "index.html")
+    return render(request, "work05/index.html")
 
 
 # listページ：仮のメッセージを表示
