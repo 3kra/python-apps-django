@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = "work06"
+
 urlpatterns = [
     path("", views.index, name="index"),  # トップページ
     path("reiwa/", views.reiwa, name="reiwa"),  # 令和変換ページ
