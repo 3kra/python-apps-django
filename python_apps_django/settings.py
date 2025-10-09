@@ -130,3 +130,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "work08" / "static",
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# 画像アップロード先
+MEDIA_URL = "/media/"  # ブラウザでアクセスするURL
+MEDIA_ROOT = BASE_DIR / "media"  # 保存先フォルダ
