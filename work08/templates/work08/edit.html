@@ -28,7 +28,9 @@
 
         {% if memo.image %}
         <p>現在の画像:</p>
-        <img src="{{ memo.image.url }}" alt="メモ画像" style="max-width:200px;">
+        <div class="memo-image">
+            <img src="{{ memo.image.url }}" alt="メモ画像" style="max-width:200px;">
+        </div>
         {% endif %}
 
         <button type="submit" class="save">保存</button>

@@ -94,6 +94,10 @@ form button.save-btn:hover {
 .memo-title {
     flex-grow: 1;
     margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 /* === 編集リンク（トップ画面） === */
@@ -145,4 +149,15 @@ button.delete {
 
 button.delete:hover {
     background-color: #a91313;
+}
+
+
+form p {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.memo-image img {
+    display: block;
+    margin-bottom: 10px;
 }

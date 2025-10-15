@@ -10,13 +10,15 @@
 
 <body>
     <h1>メモ帳アプリ</h1>
-
-    <button onclick="location.href='{% url 'work08:create_memo' %}'">新規作成</button>
+    <form method="post" action="{% url 'work08:create_memo' %}">
+        {% csrf_token %}
+        <button type="submit">新規作成</button>
+    </form>
 
     <h2>メモ一覧</h2>
     <ul>
         {% for memo in memos %}
-        <li>
+        <li class="memo-item">
             <span class="edit-link">
                 <a href="{% url 'work08:edit' memo.id %}" class="edit">編集</a>
             </span>
@@ -25,11 +27,17 @@
             {% if memo.image %}
             <img src="{{ memo.image.url }}" alt="メモ画像" style="max-width:100px;">
             {% endif %}
+
+            <form method="post" action="{% url 'work08:delete_memo' memo.id %}">
+                {% csrf_token %}
+                <button type="submit" class="delete-btn">削除</button>
+            </form>
         </li>
         {% empty %}
         <li>メモはありません</li>
         {% endfor %}
     </ul>
+
 
 </body>
 
