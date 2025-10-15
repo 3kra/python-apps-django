@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TODOアプリ</title>
+    <link rel="stylesheet" href="{% static 'work09/style.css' %}">
+</head>
+
+<body class="edit-page">
+    <div class="edit-box">
+        <h2>「{{ todo.title }}」を編集</h2>
+
+        <!-- 編集フォーム -->
+        <form method="POST" class="edit-form">
+            {% csrf_token %}
+            <label>タスク名：</label>
+            <input type="text" name="title" value="{{ todo.title }}" required>
+
+            <label>期限日：</label>
+            <input type="date" name="due_date" value="{{ todo.due_date|date:'Y-m-d' }}" required>
+
+            <label class="checkbox">
+                <input type="checkbox" name="is_completed" {% if todo.is_completed %}checked{% endif %}> 完了
+            </label>
+
+            <!-- ボタン横並び -->
+            <div class="edit-buttons">
+                <button type="submit" class="update-btn">更新</button>
+                <a href="{% url 'todo_list' %}" class="cancel-btn">キャンセル</a>
+            </div>
+        </form>
+    </div>
+    <!-- 削除ボタン -->
+    <form method="POST" action="{% url 'todo_delete' todo.id %}" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="delete-btn">削除</button>
+    </form>
+
+</body>
+
+</html>

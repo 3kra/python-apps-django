@@ -1,0 +1,321 @@
+@charset "utf-8";
+
+/* ベース */
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトル */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* 小見出し */
+h2 {
+    color: #34495e;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+h2::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 29px;
+    background-color: #3498db;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+/* 追加フォームボックス */
+.add-form-box {
+    background-color: #f5f7fa;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 900px;
+    margin-bottom: 30px;
+}
+
+/* 追加フォーム（縦並び） */
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* input とボタン */
+.add-form input[type="text"],
+.add-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.add-form button {
+    background: #3498db;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    align-self: flex-start;
+}
+
+.add-form button:hover {
+    background: #2980b9;
+}
+
+/* テーブル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    background: #34495e;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* 操作列の幅を固定 */
+table td:last-child {
+    width: 150px;
+    text-align: left;
+}
+
+
+/* ステータス */
+.done {
+    background: #eaf6e4;
+    color: #27ae60;
+    text-decoration: line-through;
+}
+
+.overdue {
+    background: #fde8e8;
+    color: #e74c3c;
+}
+
+.empty {
+    text-align: center;
+    color: #aaa;
+}
+
+/* 編集ページ */
+.edit-box {
+    background-color: #f5f7fa;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.edit-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.checkbox {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.save-btn {
+    display: block;
+    width: 100%;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background: #2980b9;
+}
+
+/* 削除ボタン */
+.delete-form {
+    margin-top: 10px;
+}
+
+.delete-btn {
+    display: block;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* 戻るリンク */
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* 完了／未完了切り替えボタン */
+.toggle-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+}
+
+.toggle-btn.complete {
+    background-color: #2ecc71;
+}
+
+.toggle-btn.complete:hover {
+    background-color: #27ae60;
+}
+
+.toggle-btn.incomplete {
+    background-color: #e67e22;
+}
+
+.toggle-btn.incomplete:hover {
+    background-color: #d35400;
+}
+
+/* 編集画面ボタン横並び */
+.edit-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* 更新ボタン */
+.update-btn {
+    /* flex: 1; */
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.update-btn:hover {
+    background: #2980b9;
+}
+
+/* キャンセルボタン（リンク風） */
+.cancel-btn {
+    /* flex: 1; */
+    display: inline-block;
+    text-align: center;
+    background: #bdc3c7;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background: #95a5a6;
+}
+
+/* 削除ボタンは既存のまま */
+.delete-form {
+    margin-top: 20px;
+}
+
+/* 完了タスクの行 */
+.row-completed {
+    background-color: #eaf6e4;
+    /* 薄緑 */
+}
+
+.done-text {
+    text-decoration: line-through;
+    /* 文字に線 */
+}
+
+/* 期限切れ未完了タスクの行 */
+.row-overdue {
+    background-color: #fde8e8;
+    /* 薄赤 */
+}
+
+.overdue-text {
+    color: #e74c3c;
+    /* 赤色 */
+    font-weight: bold;
+}
