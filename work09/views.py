@@ -1,13 +1,33 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Todo
 from datetime import date
+from datetime import date, datetime
 
 
-# 一覧表示
 def todo_list(request):
-    todos = Todo.objects.all().order_by("due_date")  # 期限順
+    sort = request.GET.get("sort", "due_date")
+    filter_status = request.GET.get("filter", "all")  # ← フィルター追加
+
+    todos = Todo.objects.all()
+
+    # フィルタ処理
+    if filter_status == "completed":
+        todos = todos.filter(is_completed=True)
+    elif filter_status == "incomplete":
+        todos = todos.filter(is_completed=False)
+
+    # ソート処理
+    if sort == "created_at":
+        todos = todos.order_by("created_at")
+    else:
+        todos = todos.order_by("due_date")
+
     today = date.today()
-    return render(request, "work09/todo_list.html", {"todos": todos, "today": today})
+    return render(
+        request,
+        "work09/todo_list.html",
+        {"todos": todos, "today": today, "sort": sort, "filter_status": filter_status},
+    )
 
 
 # 新規作成

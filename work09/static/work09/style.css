@@ -1,5 +1,15 @@
 @charset "utf-8";
 
+.page-box {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+
 /* ベース */
 body {
     font-family: "Noto Sans JP", sans-serif;
@@ -10,7 +20,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    width: 100%;
     margin: 0 auto;
     background: #fff;
     border-radius: 12px;
@@ -44,16 +54,18 @@ h2::before {
     vertical-align: middle;
 }
 
-
-/* 追加フォームボックス */
 .add-form-box {
     background-color: #f5f7fa;
     border: 1px solid #eee;
-    padding: 20px;
-    border-radius: 12px;
-    max-width: 900px;
-    margin-bottom: 30px;
+    padding: 15px 15px 0px 15px;
+    border-radius: 8px;
+    width: 100%;
+    /* margin: 0 auto 30px; */
+    box-sizing: border-box;
 }
+
+
+
 
 /* 追加フォーム（縦並び） */
 .add-form {
@@ -91,6 +103,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    font-size: 14px;
 }
 
 th {
@@ -100,14 +113,24 @@ th {
     text-align: left;
 }
 
+
 td {
     padding: 10px;
     border-bottom: 1px solid #eee;
 }
 
-tr:nth-child(even) {
-    background: #f9f9f9;
+td a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: bold;
 }
+
+td a:hover {
+    text-decoration: underline;
+    color: #3498db;
+}
+
+
 
 /* 操作列の幅を固定 */
 table td:last-child {
@@ -318,4 +341,91 @@ table td:last-child {
     color: #e74c3c;
     /* 赤色 */
     font-weight: bold;
+}
+
+.sort-link {
+    color: inherit;
+    /* 文字の色を変えない */
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+.sort-link:hover {
+    text-decoration: underline;
+    /* hover時だけ下線でわかりやすく */
+}
+
+/* 矢印の見た目を少し整える */
+.sort-link::after {
+    content: "";
+}
+
+.sort-link.active::after {
+    content: "↓";
+    margin-left: 5px;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+
+/* フィルタ全体をボックス化 */
+.filter-box {
+    font-size: 14px;
+    background-color: #f5f7fa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* 「表示：」の文字 */
+.filter-label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* ボタンの並び */
+.filter-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ボタンの見た目 */
+.filter-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 30px;
+    text-decoration: none;
+    background-color: #708090;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+/* 選択中（水色） */
+.filter-btn.active {
+    background-color: #3498db;
+    /* 登録ボタンと同じ水色 */
+}
+
+/* 状態表示ボックス */
+.status-box {
+    background-color: #ededef;
+    border-left: 6px solid #797979;
+    /* ← 左の灰色の縦棒 */
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 25px;
+}
+
+/* テキストスタイル */
+.status-box p {
+    font-size: 13px;
+    margin: 0;
+    font-weight: 500;
+    color: #696969;
 }

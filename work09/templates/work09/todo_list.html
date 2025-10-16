@@ -1,5 +1,6 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'work09/style.css' %}">
+<link rel="stylesheet" href="{% static 'work09/style.css' %}?v={{ now|date:'U' }}">
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -10,67 +11,112 @@
 </head>
 
 <body>
-    <h1>TODOアプリ</h1>
-    <h2>新しいタスクを追加</h2>
+    <div class="page-box">
+        <h1>TODOアプリ</h1>
+        <h2>新しいタスクを追加</h2>
 
-    <div class="add-form-box">
-        <form class="add-form" method="POST" action="{% url 'todo_add' %}">
-            {% csrf_token %}
-            <label>タスク名：</label>
-            <input type="text" name="title" placeholder="タイトル" required>
-            <label>期限日：</label>
-            <input type="date" name="due_date" required>
-            <button type="submit">登録</button>
-        </form>
+        <div class="add-form-box">
+            <form class="add-form" method="POST" action="{% url 'todo_add' %}">
+                {% csrf_token %}
+                <label>タスク名：</label>
+                <input type="text" name="title" placeholder="タイトル" required>
+                <label>期限日：</label>
+                <input type="date" name="due_date" required>
+                <button type="submit">登録</button>
+            </form>
+        </div>
+
+        <h2>TODO一覧</h2>
+
+        <!-- ▼ フィルタボックス -->
+        <div class="filter-box">
+            <div class="filter-buttons">
+                <span class="filter-label">表示：</span>
+                <a href="?filter=all{% if sort %}&sort={{ sort }}{% endif %}"
+                    class="filter-btn {% if filter_status == 'all' %}active{% endif %}">全て</a>
+                <a href="?filter=incomplete{% if sort %}&sort={{ sort }}{% endif %}"
+                    class="filter-btn {% if filter_status == 'incomplete' %}active{% endif %}">未完了のみ</a>
+                <a href="?filter=completed{% if sort %}&sort={{ sort }}{% endif %}"
+                    class="filter-btn {% if filter_status == 'completed' %}active{% endif %}">完了済みのみ</a>
+            </div>
+        </div>
+        <!-- ▲ フィルタボックス -->
+        <!-- ▼ 状態表示ボックス -->
+        <div class="status-box">
+            <p>
+                現在の表示：
+                {% if filter_status == 'all' %}
+                全て
+                {% elif filter_status == 'incomplete' %}
+                未完了のみ
+                {% elif filter_status == 'completed' %}
+                完了済みのみ
+                {% endif %}
+                ｜ ソート：
+                {% if sort == 'due_date' %}
+                期限日（降順）
+                {% elif sort == 'created_at' %}
+                登録日（降順）
+                {% else %}
+                なし
+                {% endif %}
+            </p>
+        </div>
+        <!-- ▲ 状態表示ボックス -->
+
+
+        <table>
+            <tr>
+                <th>状態</th>
+                <th>タスク名</th>
+                <th>
+                    <a href="?sort=due_date" class="sort-link">
+                        期限日
+                        {% if sort == 'due_date' %}↓{% endif %}
+                    </a>
+                </th>
+                <th>
+                    <a href="?sort=created_at" class="sort-link">
+                        登録日
+                        {% if sort == 'created_at' %}↓{% endif %}
+                    </a>
+                </th>
+
+                <th>操作</th>
+            </tr>
+
+            {% for todo in todos %}
+            <tr
+                class="{% if todo.is_completed %}row-completed{% elif todo.due_date < today and not todo.is_completed %}row-overdue{% endif %}">
+                <td
+                    class="{% if todo.is_completed %}done-text{% endif %}{% if todo.due_date < today and not todo.is_completed %} overdue-text{% endif %}">
+                    {% if todo.is_completed %}完了{% else %}未完了{% endif %}
+                </td>
+                <td class="{% if todo.is_completed %}done-text{% endif %}">
+                    <a href="{% url 'todo_edit' todo.id %}">{{ todo.title }}</a>
+                </td>
+                <td
+                    class="{% if todo.is_completed %}done-text{% endif %}{% if todo.due_date < today and not todo.is_completed %} overdue-text{% endif %}">
+                    {{ todo.due_date }}
+                </td>
+                <td
+                    class="{% if todo.is_completed %}done-text{% endif %}{% if todo.due_date < today and not todo.is_completed %} overdue-text{% endif %}">
+                    {{ todo.created_at|date:"Y-m-d" }}
+                </td>
+                <td>
+                    <form method="POST" action="{% url 'todo_toggle' todo.id %}">
+                        {% csrf_token %}
+                        {% if todo.is_completed %}
+                        <button type="submit" class="toggle-btn incomplete">未完了に戻す</button>
+                        {% else %}
+                        <button type="submit" class="toggle-btn complete">完了</button>
+                        {% endif %}
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
-
-    <h2>TODO一覧</h2>
-    <hr>
-    <table>
-        <tr>
-            <th>状態</th>
-            <th>タイトル</th>
-            <th>期限日</th>
-            <th>登録日</th>
-            <th>操作</th>
-        </tr>
-        {% for todo in todos %}
-        <tr class="
-    {% if todo.is_completed %}
-        row-completed
-    {% elif todo.due_date < today and not todo.is_completed %}
-        row-overdue
-    {% endif %}
-">
-            <td
-                class="{% if todo.is_completed %}done-text{% endif %}{% if todo.due_date < today and not todo.is_completed %} overdue-text{% endif %}">
-                {% if todo.is_completed %}完了{% else %}未完了{% endif %}
-            </td>
-            <td class="{% if todo.is_completed %}done-text{% endif %}">
-                {{ todo.title }}
-            </td>
-            <td
-                class="{% if todo.is_completed %}done-text{% endif %}{% if todo.due_date < today and not todo.is_completed %} overdue-text{% endif %}">
-                {{ todo.due_date }}
-            </td>
-            <td
-                class="{% if todo.is_completed %}done-text{% endif %}{% if todo.due_date < today and not todo.is_completed %} overdue-text{% endif %}">
-                {{ todo.created_at|date:"Y-m-d" }}
-            </td>
-            <td>
-                <form method="POST" action="{% url 'todo_toggle' todo.id %}">
-                    {% csrf_token %}
-                    {% if todo.is_completed %}
-                    <button type="submit" class="toggle-btn incomplete">未完了に戻す</button>
-                    {% else %}
-                    <button type="submit" class="toggle-btn complete">完了</button>
-                    {% endif %}
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-
-    </table>
 </body>
 
 </html>
